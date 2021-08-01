@@ -1,0 +1,21 @@
+{
+	"title": "Which number do you prefer?",
+	"choices": [
+		{
+			"imageUrl": "example/one.png",
+			"name": "1"
+		},
+		{
+			"imageUrl": "example/two.png",
+			"name": "2"
+		},
+		{
+			"imageUrl": "example/three.png",
+			"name": "3"
+		},
+		{
+			"imageUrl": "example/four.png",
+			"name": "4"
+		}
+	]
+}
