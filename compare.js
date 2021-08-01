@@ -58,23 +58,30 @@ async function main() {
 	}
 	$("#question").css("display", "none");
 	$("#result").css("display", "block");
-	var maxsize = 0;
+
+	//calculate size of matrix
+	//user does not necessarily answer all questions
+	var maxsize = 1;
 	for (var i = 0; i < data.choices.length; i++) {
 		var count = 0;
 		for (var j = 0; j < i; j++) {
-			if (resultMatrix[i][j] !== undefined) {
+			if (!isNaN(resultMatrix[i][j])) {
 				count++;
 			}
 		}
 		if (count != i) {
-			maxsize = i - 1;
+			console.log(count);
+			console.log(i);
 			break;
 		}
+		maxsize = i+1;
 	}
 	console.log(maxsize);
 	console.log(resultMatrix);
+
+	//sort result
 	var resultTable = [];
-	for (var i = 0; i < data.choices.length; i++) {
+	for (var i = 0; i < maxsize; i++) {
 		var r = { imageUrl: data.choices[i].imageUrl, row: resultMatrix[i] };
 		r.count = 0;
 		for (var a of resultMatrix[i]) {
@@ -83,11 +90,16 @@ async function main() {
 			}
 		}
 		resultTable.push(r);
-	}
+	}	
+	console.log(resultTable);
 	resultTable = resultTable.sort((a, b) => a.count - b.count);
 	console.log(resultTable);
-	//resultTable.sort
+	//display rankings
 	for (var r of resultTable) {
 		$("#table").append($(`<tr><td><img src="${r.imageUrl}" /> </td></tr>`));
 	}
+	var textarea=$('<textarea readonly="readonly">');
+	textarea.text(JSON.stringify(resultMatrix));
+	console.log(textarea);
+	$("#result").append(textarea);
 }
