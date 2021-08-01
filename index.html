@@ -8,21 +8,27 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="compare.js"></script>
-	<h1 id="title"></h1>
-	<div>
-		<div id="choice0" style="float:center;text-align: center;background: #aaa;margin: 5px; padding: 5px;">
-			<img id="img0" /><br>
-			<button id="button0"></button>
-		</div>
+	<div id="question">
+		<h1 id="title"></h1>
+		<div>
+			<div id="choice0" style="float:center;text-align: center;background: #aaa;margin: 5px; padding: 5px;">
+				<img id="img0" /><br>
+				<button id="button0"></button>
+			</div>
 
-		<div id="choice1" style="float:center;text-align: center;background: #aaa; margin: 5px;padding: 5px;">
-			<img id="img1" /><br>
-			<button id="button1"></button>
+			<div id="choice1" style="float:center;text-align: center;background: #aaa; margin: 5px;padding: 5px;">
+				<img id="img1" /><br>
+				<button id="button1"></button>
+			</div>
+		</div>
+		<div style="clear:both;"></div>
+		<div style="text-align: center;">
+			<button id="showres">show result</button>
 		</div>
 	</div>
-	<div style="clear:both;"></div>
-	<div style="text-align: center;">
-		<button id="showres">show result</button>
+	<div id="result" style="display:none;">
+		result
+		<table id="table"></table>
 	</div>
 </body>
 

@@ -56,7 +56,8 @@ async function main() {
 			break;
 		}
 	}
-
+	$("#question").css("display", "none");
+	$("#result").css("display", "block");
 	var maxsize = 0;
 	for (var i = 0; i < data.choices.length; i++) {
 		var count = 0;
@@ -72,4 +73,21 @@ async function main() {
 	}
 	console.log(maxsize);
 	console.log(resultMatrix);
+	var resultTable = [];
+	for (var i = 0; i < data.choices.length; i++) {
+		var r = { imageUrl: data.choices[i].imageUrl, row: resultMatrix[i] };
+		r.count = 0;
+		for (var a of resultMatrix[i]) {
+			if (!isNaN(a)) {
+				r.count += a;
+			}
+		}
+		resultTable.push(r);
+	}
+	resultTable = resultTable.sort((a, b) => a.count - b.count);
+	console.log(resultTable);
+	//resultTable.sort
+	for (var r of resultTable) {
+		$("#table").append($(`<tr><td><img src="${r.imageUrl}" /> </td></tr>`));
+	}
 }
